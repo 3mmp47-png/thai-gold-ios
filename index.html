@@ -19,11 +19,8 @@
       --gold: #f59f00;
       --gold-light: #ffe066;
       --green: #10b981;
-      --green-bg: rgba(16, 185, 129, 0.16);
       --red: #ef4444;
-      --red-bg: rgba(239, 68, 68, 0.16);
       --yellow: #f59e0b;
-      --yellow-bg: rgba(245, 158, 11, 0.16);
       --text: #f8fafc;
       --muted: #94a3b8;
     }
@@ -37,7 +34,7 @@
       background: var(--bg);
       color: var(--text);
       padding-top: calc(env(safe-area-inset-top, 12px) + 8px);
-      padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 78px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 80px);
       overflow-x: hidden;
       user-select: none;
     }
@@ -243,36 +240,6 @@
       gap: 9px;
       margin-bottom: 12px;
     }
-    .weight-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      padding: 8px 12px;
-      border-radius: 13px;
-      font-size: 12px;
-    }
-    .weight-pills {
-      display: flex;
-      gap: 5px;
-    }
-    .w-pill {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: var(--text);
-      border-radius: 8px;
-      padding: 4px 9px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .w-pill.active {
-      background: var(--gold);
-      color: #0b0f17;
-      border-color: var(--gold);
-    }
     .btn-giant {
       width: 100%;
       border: none;
@@ -338,7 +305,7 @@
     /* Chart container */
     #chart-box {
       width: 100%;
-      height: 280px;
+      height: 290px;
       border-radius: 12px;
       overflow: hidden;
     }
@@ -369,12 +336,144 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 9px 0;
+      padding: 10px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       font-size: 12px;
     }
     .trade-item:last-child {
       border-bottom: none;
+    }
+
+    /* News Cards */
+    .news-item {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .news-item:last-child {
+      border-bottom: none;
+    }
+    .news-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 5px;
+      margin-bottom: 4px;
+    }
+    .news-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .news-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Bottom Sheet Modals (Buy / Sell Calculator) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 1500;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-sheet {
+      width: 100%;
+      max-width: 480px;
+      background: #161f33;
+      border-top: 2px solid var(--gold);
+      border-radius: 22px 22px 0 0;
+      padding: 18px 16px calc(env(safe-area-inset-bottom, 16px) + 18px);
+      animation: slideUp 0.22s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-title {
+      font-size: 17px;
+      font-weight: 900;
+    }
+    .modal-close {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: var(--text);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .input-group {
+      margin-bottom: 12px;
+    }
+    .input-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 5px;
+      display: block;
+    }
+    .input-field {
+      width: 100%;
+      background: #0b0f17;
+      border: 1px solid #334155;
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 900;
+      padding: 11px 14px;
+      border-radius: 12px;
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: var(--gold);
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 7px;
+    }
+    .preset-btn {
+      flex: 1;
+      min-width: 60px;
+      background: rgba(245, 159, 0, 0.12);
+      border: 1px solid rgba(245, 159, 0, 0.35);
+      color: var(--gold-light);
+      border-radius: 8px;
+      padding: 6px 4px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+    }
+    .calc-preview {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font-size: 12px;
+      line-height: 1.65;
+      margin-bottom: 14px;
     }
 
     /* Bottom iOS Tab Bar */
@@ -383,7 +482,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 21, 35, 0.92);
+      background: rgba(15, 21, 35, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--card-border);
@@ -507,26 +606,16 @@
         </div>
       </div>
 
-      <!-- Weight Selector & Giant Buy / Sell Buttons -->
+      <!-- Giant Buy / Sell Buttons (Opens Custom Baht Amount Calculator Modal) -->
       <div class="action-stack">
-        <div class="weight-row">
-          <span style="font-weight:700; color:var(--muted);">น้ำหนักทองที่เทรด:</span>
-          <div class="weight-pills" id="weight-pills">
-            <button class="w-pill" onclick="setWeight(0.5)">0.5 บ.</button>
-            <button class="w-pill active" onclick="setWeight(1)">1 บ.</button>
-            <button class="w-pill" onclick="setWeight(2)">2 บ.</button>
-            <button class="w-pill" onclick="setWeight(5)">5 บ.</button>
-          </div>
-        </div>
-
-        <button class="btn-giant btn-buy" onclick="handleBuyTap()">
+        <button class="btn-giant btn-buy" onclick="openBuyModal()">
           <span>🟢🛒</span>
-          <span id="btn-buy-text">กดซื้อทอง (@ -- บ.) — บันทึกไม้</span>
+          <span id="btn-buy-text">กดซื้อทอง (ระบุจำนวนเงิน เช่น 1,000 บ.)</span>
         </button>
 
-        <button class="btn-giant btn-sell" onclick="handleSellTap()">
+        <button class="btn-giant btn-sell" onclick="openSellModal()">
           <span>🔴💰</span>
-          <span id="btn-sell-text">กดขาย / ปิดไม้ (@ -- บ.) — คิดกำไร</span>
+          <span id="btn-sell-text">กดขาย / ปิดไม้ — คำนวณกำไรตามเงินลงทุน</span>
         </button>
       </div>
 
@@ -534,9 +623,9 @@
       <div id="open-pos-card" class="card" style="display:none; border-color: var(--gold);">
         <div class="section-title">
           <span>📂 ไม้ที่คุณกำลังถืออยู่</span>
-          <span id="open-pos-pnl" style="font-size:14px;">+0 บ.</span>
+          <span id="open-pos-pnl" style="font-size:15px;">+0.00 บ.</span>
         </div>
-        <div id="open-pos-detail" style="font-size:12px; color:#cbd5e1; line-height:1.5;"></div>
+        <div id="open-pos-detail" style="font-size:12px; color:#cbd5e1; line-height:1.6;"></div>
       </div>
 
       <!-- Technical Reasoning -->
@@ -587,8 +676,8 @@
             <div class="stat-val" id="st-winrate" style="color:var(--green)">0.0%</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">กำไรสุทธิสะสม (หัก Spread)</div>
-            <div class="stat-val" id="st-netpnl" style="color:var(--gold-light)">+0 บ.</div>
+            <div class="stat-label">กำไร/ขาดทุนสุทธิสะสม</div>
+            <div class="stat-val" id="st-netpnl" style="color:var(--gold-light)">+0.00 บ.</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">จำนวนไม้ที่ปิดแล้ว</div>
@@ -596,37 +685,91 @@
           </div>
           <div class="stat-card">
             <div class="stat-label">ชนะ / แพ้</div>
-            <div class="stat-val" id="st-wl" style="font-size:17px;">0W / 0L</div>
+            <div class="stat-val" id="st-wl" style="font-size:17px;">0 ชนะ / 0 แพ้</div>
           </div>
         </div>
 
         <div class="section-title" style="margin-top:14px;">📝 ประวัติไม้ที่เทรดล่าสุด</div>
         <div id="trade-history-list" style="font-size:12px; color:var(--muted);">
-          ยังไม่มีประวัติการเทรด กดปุ่ม "🟢 กดซื้อทอง" ที่หน้าแรกเมื่อคุณเข้าซื้อจริง
+          ยังไม่มีประวัติการเทรด กดปุ่ม "🟢 กดซื้อทอง" ที่หน้าแรกเพื่อระบุยอดเงินซื้อ (เช่น 1,000 บาท)
         </div>
       </div>
     </div>
 
-    <!-- TAB 4: iOS INSTALL & SYSTEM INFO -->
-    <div id="tab-info" class="tab-view">
+    <!-- TAB 4: GOLD NEWS & MACRO CALENDAR (Replaced iOS Install Tab) -->
+    <div id="tab-news" class="tab-view">
       <div class="card">
-        <div class="section-title">📲 วิธีติดตั้งเป็นแอปบนหน้าจอ iPhone (iOS)</div>
-        <ol class="reason-list" style="line-height:1.7;">
-          <li>เปิดลิงก์นี้ด้วยแอป <strong>Safari</strong> บน iPhone ของคุณ</li>
-          <li>แตะปุ่ม <strong>แชร์ (Share ⬆️)</strong> ที่แถบด้านล่างของ Safari</li>
-          <li>เลื่อนลงมาแล้วแตะ <strong>"เพิ่มไปยังหน้าจอโฮม" (Add to Home Screen ➕)</strong></li>
-          <li>แตะ <strong>เพิ่ม (Add)</strong> มุมขวาบน — คุณจะได้ไอคอนแอป <strong>Gold 96.5%</strong> บนหน้าจอ iPhone เปิดใช้งานเต็มจอเหมือนแอปแท้ 100% โดยไม่ต้องจ่ายค่าธรรมเนียม App Store!</li>
-        </ol>
+        <div class="section-title">
+          <span>📰 ข่าวทองคำและเศรษฐกิจล่าสุด</span>
+          <button onclick="fetchGoldNews(true)" style="background:rgba(245,159,0,0.15); border:1px solid var(--gold); color:var(--gold-light); border-radius:7px; font-size:11px; padding:3px 9px; font-weight:700; cursor:pointer;">🔄 โหลดข่าวใหม่</button>
+        </div>
+        <div id="news-container">
+          <div style="color:var(--muted); font-size:13px; padding:12px 0;">กำลังดึงข่าวราคาทองคำล่าสุด...</div>
+        </div>
       </div>
 
       <div class="card">
-        <div class="section-title">🎯 ระบบสัญญาณ 2 ระดับ (Backtest 30 วัน)</div>
-        <ul class="reason-list" style="line-height:1.65;">
-          <li><strong>🔥 ระดับ 1 (Sniper — Win Rate 85%+):</strong> คัดเฉพาะจุดกลับตัวหลังย่อลึกและมีช่องว่างรีบาวด์หา EMA21 >= 50 บาท ในช่วงตลาดยุโรป-อเมริกา (กำไรสุทธิ +1,470 บ./บาททอง ใน 30 วัน)</li>
-          <li><strong>⚡ ระดับ 2 (Fast Scalp — Win Rate ~70%):</strong> จังหวะย่อซื้อเก็งกำไรระยะสั้นระหว่างวัน ออกไม้ถี่ขึ้นเป็น ~23 ไม้/เดือน</li>
-          <li><strong>🔒 ระบบล็อกกำไร:</strong> เมื่อถือไม้แล้วราคาบวกแตะ +190 บาท ระบบจะเลื่อนจุดล็อกกำไรขั้นต่ำขึ้นมาที่ +110 บาทอัตโนมัติ</li>
+        <div class="section-title">📅 ช่วงเวลาสำคัญที่ทองแกว่งแรง (เวลาไทย)</div>
+        <ul class="reason-list" style="line-height:1.65; font-size:12px;">
+          <li><strong>14:00 – 15:30 น. (ตลาดลอนดอนเปิด):</strong> วอลุ่มยุโรปเข้า มักเริ่มเลือกทางรอบบ่าย</li>
+          <li><strong>19:30 – 21:00 น. (ตลาดอเมริกา & ข่าวเศรษฐกิจสหรัฐฯ):</strong> ช่วงประกาศตัวเลขเงินเฟ้อ (CPI/PCE), การจ้างงาน (NFP) และผู้ขอสวัสดิการว่างงาน ทองมักสวิง 200–600 บาท</li>
+          <li><strong>01:00 – 02:00 น. (ประชุม Fed / FOMC):</strong> วันที่มีแถลงดอกเบี้ยสหรัฐฯ ควรมีจุด Stop Loss เสมอ</li>
         </ul>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: BUY GOLD CALCULATOR (Specify Baht Amount e.g. 1,000 THB & Gold Price) -->
+  <div id="buy-modal" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <div class="modal-title" style="color:var(--green);">🟢🛒 บันทึกการเข้าซื้อทองคำ</div>
+        <button class="modal-close" onclick="closeBuyModal()">✕</button>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">💵 จำนวนเงินที่เข้าซื้อ (บาท) — เช่น 1000</label>
+        <input type="number" id="buy-amount-input" class="input-field" value="1000" inputmode="decimal" oninput="updateBuyPreview()" />
+        <div class="preset-row">
+          <button class="preset-btn" onclick="setBuyAmount(500)">500 ฿</button>
+          <button class="preset-btn" onclick="setBuyAmount(1000)">1,000 ฿</button>
+          <button class="preset-btn" onclick="setBuyAmount(2000)">2,000 ฿</button>
+          <button class="preset-btn" onclick="setBuyAmount(5000)">5,000 ฿</button>
+          <button class="preset-btn" onclick="setBuyAmount(10000)">10,000 ฿</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">🏷️ ราคาทองตอนที่คุณกดซื้อ (บาท / 1 บาททองคำ)</label>
+        <input type="number" id="buy-price-input" class="input-field" value="58150" inputmode="decimal" oninput="updateBuyPreview()" />
+      </div>
+
+      <div id="buy-preview-box" class="calc-preview"></div>
+
+      <button class="btn-giant btn-buy" onclick="confirmBuyOrder()">
+        ✅ ยืนยันบันทึกไม้ซื้อนี้
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL 2: SELL GOLD CALCULATOR -->
+  <div id="sell-modal" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <div class="modal-title" style="color:var(--red);">🔴💰 บันทึกการขาย / ปิดไม้</div>
+        <button class="modal-close" onclick="closeSellModal()">✕</button>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">🏷️ ราคาทองตอนที่คุณกดขาย (บาท / 1 บาททองคำ)</label>
+        <input type="number" id="sell-price-input" class="input-field" value="58410" inputmode="decimal" oninput="updateSellPreview()" />
+      </div>
+
+      <div id="sell-preview-box" class="calc-preview"></div>
+
+      <button class="btn-giant btn-sell" onclick="confirmSellOrder()">
+        🧾 ยืนยันการขายและคำนวณกำไร
+      </button>
     </div>
   </div>
 
@@ -644,33 +787,33 @@
       <span class="tab-icon">💼</span>
       <span>พอร์ต & สถิติ</span>
     </button>
-    <button class="tab-btn" onclick="switchTab('info', this)">
-      <span class="tab-icon">📲</span>
-      <span>ติดตั้ง iOS</span>
+    <button class="tab-btn" onclick="switchTab('news', this)">
+      <span class="tab-icon">📰</span>
+      <span>ข่าวทอง</span>
     </button>
   </div>
 
   <script>
     const THAI_GOLD_FACTOR = (15.244 * 0.965) / 31.1035; // 0.472909
-    const SPREAD_THB = 50;
-    let selectedWeight = 1.0;
     let currentPrice = 58150;
     let currentTP = 58410;
     let currentSL = 57870;
     let usdThb = 34.0;
     let gtaSell = null;
+    let gtaBuy = null;
     let chart = null;
     let candleSeries = null;
     let ema9Series = null;
     let ema21Series = null;
     let ema50Series = null;
+    let newsLoaded = false;
 
     function showToast(msg, color = "#10b981") {
       const t = document.getElementById("toast");
       t.textContent = msg;
       t.style.background = color;
       t.style.display = "block";
-      setTimeout(() => { t.style.display = "none"; }, 2600);
+      setTimeout(() => { t.style.display = "none"; }, 2800);
     }
 
     function switchTab(name, btn) {
@@ -681,14 +824,210 @@
       if (name === "chart" && chart) {
         setTimeout(() => chart.timeScale().fitContent(), 50);
       }
+      if (name === "news" && !newsLoaded) {
+        fetchGoldNews(false);
+      }
     }
 
-    function setWeight(w) {
-      selectedWeight = w;
-      document.querySelectorAll(".w-pill").forEach(btn => {
-        btn.classList.toggle("active", btn.textContent.startsWith(String(w)));
-      });
+    // Buy & Sell Calculator Modal Logic
+    function openBuyModal() {
+      document.getElementById("buy-price-input").value = currentPrice;
+      if (!document.getElementById("buy-amount-input").value) {
+        document.getElementById("buy-amount-input").value = 1000;
+      }
+      updateBuyPreview();
+      document.getElementById("buy-modal").classList.add("open");
+    }
+
+    function closeBuyModal() {
+      document.getElementById("buy-modal").classList.remove("open");
+    }
+
+    function setBuyAmount(amt) {
+      document.getElementById("buy-amount-input").value = amt;
+      updateBuyPreview();
+    }
+
+    function updateBuyPreview() {
+      const amt = parseFloat(document.getElementById("buy-amount-input").value) || 0;
+      const entryP = parseFloat(document.getElementById("buy-price-input").value) || currentPrice;
+      const weightBaht = entryP > 0 ? (amt / entryP) : 0;
+      const weightGrams = weightBaht * 15.244;
+      const tpPrice = entryP + 260;
+      const slPrice = entryP - 280;
+      const estTpProfit = amt * (260 / entryP);
+      const estSlLoss = amt * (-280 / entryP);
+
+      document.getElementById("buy-preview-box").innerHTML =
+        `• ยอดเงินลงทุน: <strong style="color:var(--gold-light)">${amt.toLocaleString("th-TH", {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท</strong><br>` +
+        `• น้ำหนักทองที่ได้: <strong>${weightBaht.toFixed(5)} บาททอง</strong> (${weightGrams.toFixed(3)} กรัม)<br>` +
+        `• เป้าขายทำกำไร (TP ${tpPrice.toLocaleString()} บ.): กำไร <strong>+${estTpProfit.toFixed(2)} บาท</strong><br>` +
+        `• จุดตัดขาดทุน (SL ${slPrice.toLocaleString()} บ.): ขาดทุน <strong>${estSlLoss.toFixed(2)} บาท</strong>`;
+    }
+
+    function confirmBuyOrder() {
+      const amt = parseFloat(document.getElementById("buy-amount-input").value) || 0;
+      const entryP = parseFloat(document.getElementById("buy-price-input").value) || currentPrice;
+      if (amt <= 0 || entryP <= 0) {
+        showToast("⚠️ กรุณาระบุจำนวนเงินและราคาทองให้ถูกต้อง", "#f59e0b");
+        return;
+      }
+      const data = loadPortfolio();
+      const id = data.nextId++;
+      const weightBaht = amt / entryP;
+      const pos = {
+        id,
+        time: new Date().toLocaleTimeString("th-TH"),
+        price: entryP,
+        investBaht: amt,
+        weight: weightBaht,
+        tp: entryP + 260,
+        sl: entryP - 280,
+        locked: false,
+      };
+      data.open.push(pos);
+      savePortfolio(data);
+      closeBuyModal();
+      showToast(`✅ บันทึกไม้ #${id} (ซื้อ ${amt.toLocaleString()} บ. @ ${entryP.toLocaleString()})`);
       renderPortfolio();
+    }
+
+    function openSellModal() {
+      const data = loadPortfolio();
+      if (!data.open.length) {
+        showToast("⚠️ ไม่มีไม้ที่เปิดค้างอยู่ กรุณากดปุ่มซื้อก่อนครับ", "#f59e0b");
+        return;
+      }
+      document.getElementById("sell-price-input").value = currentPrice;
+      updateSellPreview();
+      document.getElementById("sell-modal").classList.add("open");
+    }
+
+    function closeSellModal() {
+      document.getElementById("sell-modal").classList.remove("open");
+    }
+
+    function updateSellPreview() {
+      const data = loadPortfolio();
+      if (!data.open.length) return;
+      const pos = data.open[data.open.length - 1];
+      const sellP = parseFloat(document.getElementById("sell-price-input").value) || currentPrice;
+      const invest = pos.investBaht || (pos.weight * pos.price);
+      const weight = pos.weight || (invest / pos.price);
+      const finalValue = weight * sellP;
+      const netPnl = finalValue - invest;
+      const pct = invest > 0 ? (netPnl / invest * 100) : 0;
+      const sign = netPnl >= 0 ? "+" : "";
+      const color = netPnl >= 0 ? "var(--green)" : "var(--red)";
+
+      document.getElementById("sell-preview-box").innerHTML =
+        `• ปิดไม้ที่ <strong>#${pos.id}</strong> (เงินลงทุนตั้งต้น: <strong>${invest.toLocaleString("th-TH", {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท</strong>)<br>` +
+        `• ราคาทองตอนซื้อ: <strong>${pos.price.toLocaleString()} บ.</strong> ➔ ราคาทองตอนขาย: <strong>${sellP.toLocaleString()} บ.</strong><br>` +
+        `• ส่วนต่างราคาทอง: <strong>${(sellP - pos.price >= 0 ? "+" : "") + (sellP - pos.price).toLocaleString()} บ./บาททอง</strong><br>` +
+        `• มูลค่าเงินที่ได้รับคืน: <strong>${finalValue.toLocaleString("th-TH", {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท</strong><br>` +
+        `• กำไร/ขาดทุนสุทธิไม้นี้: <strong style="font-size:15px; color:${color}">${sign}${netPnl.toFixed(2)} บาท (${sign}${pct.toFixed(2)}%)</strong>`;
+    }
+
+    function confirmSellOrder() {
+      const data = loadPortfolio();
+      if (!data.open.length) return;
+      const pos = data.open.pop();
+      const sellP = parseFloat(document.getElementById("sell-price-input").value) || currentPrice;
+      const invest = pos.investBaht || (pos.weight * pos.price);
+      const weight = pos.weight || (invest / pos.price);
+      const finalValue = weight * sellP;
+      const netPnl = parseFloat((finalValue - invest).toFixed(2));
+      const pct = invest > 0 ? parseFloat((netPnl / invest * 100).toFixed(2)) : 0;
+
+      data.closed.push({
+        id: pos.id,
+        entryPrice: pos.price,
+        exitPrice: sellP,
+        investBaht: invest,
+        weight: weight,
+        netPnl: netPnl,
+        pct: pct,
+        time: new Date().toLocaleTimeString("th-TH"),
+      });
+      savePortfolio(data);
+      closeSellModal();
+      const sign = netPnl >= 0 ? "+" : "";
+      showToast(
+        `🧾 ปิดไม้ #${pos.id} สำเร็จ! สุทธิ ${sign}${netPnl.toFixed(2)} บาท (${sign}${pct.toFixed(2)}%)`,
+        netPnl >= 0 ? "#10b981" : "#ef4444"
+      );
+      renderPortfolio();
+    }
+
+    // Live Gold News Fetcher
+    function classifyNewsSentiment(title) {
+      const t = title.toLowerCase();
+      if (t.includes("พุ่ง") || t.includes("ขึ้น") || t.includes("บวก") || t.includes("นิวไฮ") || t.includes("เก็งลดดอกเบี้ย") || t.includes("surge") || t.includes("rally") || t.includes("gain")) {
+        return { label: "🟢 ปัจจัยบวกต่อทอง (Bullish)", bg: "rgba(16,185,129,0.2)", color: "#6ee7b7" };
+      }
+      if (t.includes("ร่วง") || t.includes("ดิ่ง") || t.includes("ลง") || t.includes("ลบ") || t.includes("เทขาย") || t.includes("ดอลลาร์แข็ง") || t.includes("drop") || t.includes("fall")) {
+        return { label: "🔴 กดดันราคาทอง (Bearish)", bg: "rgba(239,68,68,0.2)", color: "#fca5a5" };
+      }
+      return { label: "🟡 อัปเดตตลาดทองคำ", bg: "rgba(245,158,11,0.2)", color: "#fcd34d" };
+    }
+
+    async function fetchGoldNews(showFeedback = false) {
+      const box = document.getElementById("news-container");
+      if (showFeedback) {
+        box.innerHTML = `<div style="color:var(--muted); font-size:13px; padding:12px 0;">กำลังอัปเดตข่าวทองคำล่าสุด...</div>`;
+      }
+      const rssUrl = "https://news.google.com/rss/search?q=%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3+OR+%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3&hl=th&gl=TH&ceid=TH:th";
+      let items = [];
+
+      // Try rss2json first
+      try {
+        const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+        if (r.ok) {
+          const j = await r.json();
+          if (Array.isArray(j?.items) && j.items.length > 0) {
+            items = j.items.slice(0, 8).map(it => ({
+              title: it.title,
+              link: it.link,
+              pubDate: it.pubDate,
+            }));
+          }
+        }
+      } catch (e) {}
+
+      // Fallback to allorigins XML if needed
+      if (items.length === 0) {
+        try {
+          const r2 = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
+          if (r2.ok) {
+            const j2 = await r2.json();
+            if (j2?.contents) {
+              const xml = new DOMParser().parseFromString(j2.contents, "text/xml");
+              const nodes = Array.from(xml.querySelectorAll("item")).slice(0, 8);
+              items = nodes.map(n => ({
+                title: n.querySelector("title")?.textContent || "",
+                link: n.querySelector("link")?.textContent || "#",
+                pubDate: n.querySelector("pubDate")?.textContent || "",
+              }));
+            }
+          }
+        } catch (e) {}
+      }
+
+      newsLoaded = true;
+      if (items.length === 0) {
+        box.innerHTML = `<div style="color:var(--muted); font-size:13px;">ไม่สามารถโหลดข่าวได้ในขณะนี้ กรุณากดปุ่มโหลดข่าวใหม่อีกครั้ง</div>`;
+        return;
+      }
+
+      box.innerHTML = items.map(it => {
+        const sent = classifyNewsSentiment(it.title);
+        return `<a class="news-item" href="${it.link}" target="_blank" rel="noopener">
+          <span class="news-tag" style="background:${sent.bg}; color:${sent.color}">${sent.label}</span>
+          <div class="news-title">${it.title}</div>
+          <div class="news-meta">🕒 ${it.pubDate ? new Date(it.pubDate).toLocaleString("th-TH") : "ข่าวล่าสุด"} • แตะเพื่ออ่านข่าวเต็ม</div>
+        </a>`;
+      }).join("");
+      if (showFeedback) showToast("📰 อัปเดตข่าวทองคำล่าสุดแล้ว");
     }
 
     // Technical Indicator Helpers
@@ -735,6 +1074,7 @@
             const bar = jGta.response.price.gold_bar;
             const buy = parseFloat(bar.buy.replace(/,/g, ""));
             const sell = parseFloat(bar.sell.replace(/,/g, ""));
+            gtaBuy = buy;
             gtaSell = sell;
             document.getElementById("gta-buy").textContent = buy.toLocaleString();
             document.getElementById("gta-sell").textContent = sell.toLocaleString();
@@ -752,20 +1092,19 @@
         }
       } catch (e) {}
 
-      // 3. Fetch 240 real-time 5m Gold candles (PAXGUSDT 1:1 fine troy oz gold)
+      // 3. Fetch 240 real-time 5m Gold candles
       try {
         const rK = await fetch("https://api.binance.com/api/v3/klines?symbol=PAXGUSDT&interval=5m&limit=240");
         if (!rK.ok) return;
         const klines = await rK.json();
         if (!Array.isArray(klines) || klines.length < 60) return;
 
-        // Calibrate basis to match GTA or Thai spot formula cleanly
         const lastRawSpot = parseFloat(klines[klines.length - 1][4]);
         const rawThai = lastRawSpot * usdThb * THAI_GOLD_FACTOR;
         const basisRatio = gtaSell ? (gtaSell / rawThai) : 1.0;
 
         const candles = klines.map(k => {
-          const t = Math.floor(k[0] / 1000) + 7 * 3600; // Bangkok timezone for chart
+          const t = Math.floor(k[0] / 1000) + 7 * 3600;
           const mult = usdThb * THAI_GOLD_FACTOR * basisRatio;
           return {
             time: t,
@@ -900,7 +1239,6 @@
       }
       reasons.push(`RSI(14) อยู่ที่ ${rsi.toFixed(1)} (ต่ำสุดใน 10 แท่งล่าสุด: ${rsiMin10.toFixed(1)})`);
 
-      // Update DOM
       document.getElementById("thai-price").textContent = price.toLocaleString() + " ฿";
       document.getElementById("spot-text").textContent = `Spot: $${last.xau.toFixed(2)} | USD/THB: ${usdThb.toFixed(2)}`;
       document.getElementById("clock-text").textContent = "อัปเดตล่าสุด: " + new Date().toLocaleTimeString("th-TH");
@@ -912,7 +1250,7 @@
       document.getElementById("lv-tp").textContent = currentTP.toLocaleString();
       document.getElementById("lv-sl").textContent = currentSL.toLocaleString();
 
-      document.getElementById("btn-buy-text").textContent = `กดซื้อทอง (@ ${price.toLocaleString()} บ.) — บันทึกไม้`;
+      document.getElementById("btn-buy-text").textContent = `กดซื้อทอง (@ ${price.toLocaleString()} บ.) — ระบุจำนวนเงิน`;
       document.getElementById("btn-sell-text").textContent = `กดขาย / ปิดไม้ (@ ${price.toLocaleString()} บ.) — คิดกำไร`;
 
       document.getElementById("rsi-badge").textContent = `RSI(14): ${rsi.toFixed(1)}`;
@@ -958,65 +1296,19 @@
     // Portfolio Storage (iPhone localStorage)
     function loadPortfolio() {
       try {
-        const raw = localStorage.getItem("thai_gold_ios_portfolio");
+        const raw = localStorage.getItem("thai_gold_ios_portfolio_v2");
         if (raw) return JSON.parse(raw);
       } catch (e) {}
       return { open: [], closed: [], nextId: 1 };
     }
 
     function savePortfolio(data) {
-      localStorage.setItem("thai_gold_ios_portfolio", JSON.stringify(data));
-    }
-
-    function handleBuyTap() {
-      const data = loadPortfolio();
-      const id = data.nextId++;
-      const pos = {
-        id,
-        time: new Date().toLocaleTimeString("th-TH"),
-        price: currentPrice,
-        weight: selectedWeight,
-        tp: currentPrice + 260,
-        sl: currentPrice - 280,
-        locked: false,
-      };
-      data.open.push(pos);
-      savePortfolio(data);
-      showToast(`✅ บันทึกไม้ซื้อ #${id} (${selectedWeight} บ.) @ ${currentPrice.toLocaleString()}`);
-      renderPortfolio();
-    }
-
-    function handleSellTap() {
-      const data = loadPortfolio();
-      if (!data.open.length) {
-        showToast("⚠️ ไม่มีไม้ที่เปิดค้างอยู่ กรุณากดปุ่มซื้อก่อนครับ", "#f59e0b");
-        return;
-      }
-      const pos = data.open.pop();
-      const grossPerBaht = currentPrice - pos.price;
-      const netPerBaht = grossPerBaht - SPREAD_THB;
-      const netTotal = Math.round(netPerBaht * (pos.weight || 1));
-
-      data.closed.push({
-        id: pos.id,
-        entryPrice: pos.price,
-        exitPrice: currentPrice,
-        weight: pos.weight || 1,
-        netPnl: netTotal,
-        time: new Date().toLocaleTimeString("th-TH"),
-      });
-      savePortfolio(data);
-      const sign = netTotal >= 0 ? "+" : "";
-      showToast(
-        `🧾 ปิดไม้ #${pos.id} สำเร็จ! สุทธิ ${sign}${netTotal.toLocaleString()} บาท`,
-        netTotal >= 0 ? "#10b981" : "#ef4444"
-      );
-      renderPortfolio();
+      localStorage.setItem("thai_gold_ios_portfolio_v2", JSON.stringify(data));
     }
 
     function resetStats() {
       if (confirm("ต้องการล้างประวัติสถิติการเทรดทั้งหมดหรือไม่?")) {
-        localStorage.removeItem("thai_gold_ios_portfolio");
+        localStorage.removeItem("thai_gold_ios_portfolio_v2");
         renderPortfolio();
         showToast("รีเซ็ตสถิติเรียบร้อยแล้ว");
       }
@@ -1028,18 +1320,25 @@
       if (data.open.length > 0) {
         openCard.style.display = "block";
         const latest = data.open[data.open.length - 1];
-        const w = latest.weight || 1;
-        const netPnl = Math.round(((currentPrice - latest.price) - SPREAD_THB) * w);
+        const invest = latest.investBaht || (latest.weight * latest.price);
+        const w = latest.weight || (invest / latest.price);
+        const currentVal = w * currentPrice;
+        const netPnl = currentVal - invest;
+        const pct = invest > 0 ? (netPnl / invest * 100) : 0;
+
         if (currentPrice >= latest.price + 190 && !latest.locked) {
           latest.sl = latest.price + 110;
           latest.locked = true;
           savePortfolio(data);
         }
+
         const pnlEl = document.getElementById("open-pos-pnl");
-        pnlEl.textContent = `${netPnl >= 0 ? "+" : ""}${netPnl.toLocaleString()} บ.`;
+        const sign = netPnl >= 0 ? "+" : "";
+        pnlEl.textContent = `${sign}${netPnl.toFixed(2)} บ. (${sign}${pct.toFixed(2)}%)`;
         pnlEl.style.color = netPnl >= 0 ? "var(--green)" : "var(--red)";
         document.getElementById("open-pos-detail").innerHTML =
-          `ไม้ <strong>#${latest.id}</strong> (${w} บาททอง) | ซื้อไว้ @ <strong>${latest.price.toLocaleString()}</strong> บ.<br>` +
+          `ไม้ <strong>#${latest.id}</strong> | เงินที่ซื้อ: <strong style="color:var(--gold-light)">${invest.toLocaleString("th-TH", {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท</strong> (${w.toFixed(4)} บาททอง)<br>` +
+          `ราคาทองตอนซื้อ: <strong>${latest.price.toLocaleString()}</strong> บ. ➔ มูลค่าตอนนี้: <strong>${currentVal.toFixed(2)} บาท</strong><br>` +
           `🎯 เป้าขาย TP: <strong>${latest.tp.toLocaleString()}</strong> บ. | 🛑 จุด SL: <strong>${latest.sl.toLocaleString()}</strong> บ.` +
           (latest.locked ? `<br><span style="color:var(--green)">🔒 เลื่อนจุดล็อกกำไรขั้นต่ำขึ้นมาที่ ${latest.sl.toLocaleString()} บ. แล้ว!</span>` : "");
       } else {
@@ -1056,25 +1355,27 @@
 
       document.getElementById("st-winrate").textContent = `${wr}%`;
       const netEl = document.getElementById("st-netpnl");
-      netEl.textContent = `${sumNet >= 0 ? "+" : ""}${sumNet.toLocaleString()} บ.`;
+      netEl.textContent = `${sumNet >= 0 ? "+" : ""}${sumNet.toFixed(2)} บ.`;
       netEl.style.color = sumNet >= 0 ? "var(--green)" : "var(--red)";
       document.getElementById("st-count").textContent = `${total} ไม้`;
       document.getElementById("st-wl").textContent = `${wins} ชนะ / ${losses} แพ้`;
 
       const histEl = document.getElementById("trade-history-list");
       if (closed.length === 0) {
-        histEl.innerHTML = "ยังไม่มีประวัติการเทรด กดปุ่ม '🟢 กดซื้อทอง' ที่หน้าแรกเมื่อคุณเข้าซื้อจริง";
+        histEl.innerHTML = "ยังไม่มีประวัติการเทรด กดปุ่ม '🟢 กดซื้อทอง' ที่หน้าแรกเพื่อระบุยอดเงินซื้อ (เช่น 1,000 บาท)";
       } else {
-        histEl.innerHTML = closed.slice().reverse().slice(0, 10).map(t => {
+        histEl.innerHTML = closed.slice().reverse().slice(0, 12).map(t => {
           const isWin = t.netPnl > 0;
           const sign = isWin ? "+" : "";
+          const inv = t.investBaht ? `${t.investBaht.toLocaleString()} บ.` : `${(t.weight || 1).toFixed(2)} บ.ทอง`;
+          const pctStr = t.pct !== undefined ? ` (${sign}${t.pct.toFixed(2)}%)` : "";
           return `<div class="trade-item">
             <div>
-              <strong>#${t.id}</strong> (${t.weight} บ.) ซื้อ ${t.entryPrice.toLocaleString()} ➔ ขาย ${t.exitPrice.toLocaleString()}
+              <strong>#${t.id}</strong> [ทุน ${inv}] ซื้อ @ ${t.entryPrice.toLocaleString()} ➔ ขาย @ ${t.exitPrice.toLocaleString()}
               <div style="font-size:10px; color:var(--muted);">เวลาปิดไม้: ${t.time}</div>
             </div>
             <div style="font-weight:800; color:${isWin ? 'var(--green)' : 'var(--red)'}">
-              ${sign}${t.netPnl.toLocaleString()} บ.
+              ${sign}${t.netPnl.toFixed(2)} บ.${pctStr}
             </div>
           </div>`;
         }).join("");
@@ -1085,7 +1386,8 @@
       initChart();
       renderPortfolio();
       fetchAllMarketData();
-      setInterval(fetchAllMarketData, 10000); // auto-refresh every 10s
+      fetchGoldNews(false);
+      setInterval(fetchAllMarketData, 10000);
     });
   </script>
 </body>
