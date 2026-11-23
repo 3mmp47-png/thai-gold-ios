@@ -1,0 +1,18 @@
+{
+  "name": "Thai Gold 96.5% Advisor",
+  "short_name": "Gold 96.5%",
+  "description": "ระบบวิเคราะห์และแนะนำจุดซื้อ-ขายทองคำไทย 96.5% ระยะสั้น (5m)",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f17",
+  "theme_color": "#0b0f17",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
